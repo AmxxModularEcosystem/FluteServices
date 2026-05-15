@@ -3,6 +3,7 @@
 #include <easy_http>
 #include <FluteServices>
 #include <ParamsController>
+#include <VipModular>
 
 #include "FluteServices/Utils"
 #include "FluteServices/Forwards"
@@ -10,6 +11,7 @@
 #define ADMIN_ACCESS_FLAGS ADMIN_RCON
 
 // TODO: Support additional params
+// TODO: Give services
 
 new ApiAccessToken[64];
 new ApiBaseUrl[256];
@@ -136,6 +138,7 @@ Http_UpdatePlayer(const playerIndex) {
     ezjson_free(bodyJson);
 
     Forwards_CallP("Flute_Services_PlayerUpdated", playerIndex);
+    Integration_OnPlayerUpdated(playerIndex);
     log_amx("Flute Services: Player %n has %d services.", playerIndex, TrieGetSize(PlayerServices[playerIndex]));
 }
 
@@ -203,6 +206,7 @@ FindOnlinePlayerBySteamId(const steamid[]) {
 }
 
 #include "FluteServices/Integrations/Limits"
+#include "FluteServices/Integrations/VipM"
 
 public plugin_natives() {
     set_native_filter("@NativeFilter");
@@ -217,7 +221,17 @@ public plugin_natives() {
         handled = true;
     }
 
+    if (Integration_VipM_NativeFilter(name, trap)) {
+        handled = true;
+    }
+
+    // TODO: ItemsController
+
     return handled ? PLUGIN_HANDLED : PLUGIN_CONTINUE;
+}
+
+Integration_OnPlayerUpdated(const playerIndex) {
+    Integration_VipM_PlayerUpdated(playerIndex);
 }
 
 bool:@Flute_Services_Has() {
