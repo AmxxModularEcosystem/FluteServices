@@ -17,6 +17,7 @@ env:
   PLUGINS_INI_GENERATE: 0
   # PLUGINS_INI_POSTFIX: 
   DEPS_LIST: |
+    AmxxModularEcosystem/ParamsController@1.4.0
     AmxxModularEcosystem/VipModular@5.0.0-rc4f1
 
 jobs:
