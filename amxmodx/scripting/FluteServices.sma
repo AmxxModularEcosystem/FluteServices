@@ -36,8 +36,23 @@ public plugin_precache() {
     if (playerIndex != 0 && !(get_user_flags(playerIndex) & ADMIN_ACCESS_FLAGS)) {
         return PLUGIN_HANDLED;
     }
+    
+    if (read_argc() > 1) {
+        static steamid[MAX_AUTHID_LENGTH];
+        read_argv(1, steamid, charsmax(steamid));
 
-    // TODO: all or specific player by steamid
+        new playerIndex = FindOnlinePlayerBySteamId(steamid);
+
+        if (playerIndex > 0) {
+            Http_UpdatePlayer(playerIndex);
+        }
+    } else {
+        for (new i = 1; i <= MAX_PLAYERS; ++i) {
+            if (is_user_connected(i)) {
+                Http_UpdatePlayer(i);
+            }
+        }
+    }
 
     return PLUGIN_HANDLED;
 }
