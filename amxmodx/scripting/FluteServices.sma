@@ -240,7 +240,7 @@ public plugin_natives() {
         handled = true;
     }
 
-    // TODO: ItemsController
+    // TODO: ItemsController (require give services)
 
     return handled ? PLUGIN_HANDLED : PLUGIN_CONTINUE;
 }
