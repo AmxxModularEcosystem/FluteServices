@@ -250,7 +250,7 @@ Integration_OnPlayerUpdated(const playerIndex) {
 }
 
 bool:@Flute_Services_Has() {
-    enum {Arg_PlayerIndex, Arg_ServiceKey};
+    enum {Arg_PlayerIndex = 1, Arg_ServiceKey};
 
     new playerIndex = get_param(Arg_PlayerIndex);
     new serviceKey[FLUTE_SERVICES_KEY_MAX_LEN];
