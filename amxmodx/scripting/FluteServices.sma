@@ -71,6 +71,7 @@ public plugin_precache() {
         return PLUGIN_HANDLED;
     }
 
+    client_print(playerIndex, print_console, "You have this service.");
     return PLUGIN_HANDLED;
 }
 
@@ -232,7 +233,7 @@ public plugin_natives() {
 @NativeFilter(const name[], const index, const bool:trap) {
     new handled = false;
 
-    if (Integration_Limits_NativeFilter(name)) {
+    if (Integration_Limits_NativeFilter(name, trap)) {
         handled = true;
     }
 
