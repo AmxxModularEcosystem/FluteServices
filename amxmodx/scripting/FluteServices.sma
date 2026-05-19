@@ -132,7 +132,6 @@ Http_UpdatePlayer(const playerIndex) {
     InitPlayerServices(playerIndex);
 
     new EzJSON:servicesJson = ezjson_object_get_value(bodyJson, "services");
-    ezjson_serial_to_file(bodyJson, PCPath_iMakePath("Flute/last-body.json"), .pretty = true)
     for (new i = 0, ii = ezjson_array_get_count(servicesJson); i < ii; ++i) {
         new EzJSON:serviceJson = ezjson_array_get_value(servicesJson, i);
 
