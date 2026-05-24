@@ -178,7 +178,7 @@ EzHttpRequest:Http_Request(
         options = ezhttp_create_options();
     }
     
-    ezhttp_option_set_header(options, "Authorization", fmt("Bearer %s", ApiAccessToken));
+    ezhttp_option_set_header(options, "X-API-Key", ApiAccessToken);
     if (bodyJson != EzInvalid_JSON) {
         ezhttp_option_set_body_from_json(options, bodyJson);
     }
