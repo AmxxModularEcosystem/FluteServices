@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/AmxxModularEcosystem/amxx-builder/master/schema/amxbuild.schema.json
+
+name: FluteServices
+
+amxmodx:
+  version: "1.10.5428"
+
+deps:
+  - Next21Team/AmxxEasyHttp@1.4.0:amxx/scripting/include
+  - AmxxModularEcosystem/ParamsController@1.4.2
+  - AmxxModularEcosystem/VipModular@5.0.0-rc4f2
